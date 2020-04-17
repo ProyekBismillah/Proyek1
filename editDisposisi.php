@@ -144,9 +144,8 @@
                   <?php
                     include 'koneksi.php';
                     $no=$_GET['no'];
-                    $query="SELECT * FROM disposisi " ; 
+                    $query="SELECT * FROM disposisi WHERE id_disposisi = '$no'" ; 
                     $result=mysqli_query($kon, $query);
-                    $a = mysqli_query($kon, "SELECT * FROM disposisi");
                     while ($row=mysqli_fetch_array($result)) {
                   ?>
                       <form class="well form-horizontal" action="p_editDisposisi.php" method="POST"  id="contact_form" enctype="multipart/form-data">

@@ -132,36 +132,29 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>No.</th>
-                    <th>Tanggal Surat</th>
-                    <th>Tanggal Terima</th>
-                    <th>Kode Agenda</th>
-                    <th>No. Surat</th>
-                    <th>Jenis Surat</th>
-                    <th>Pengirim</th>
-                    <th>Perihal</th>
-                    <th>Aksi</th>
+                    <th>Username</th>
+                    <th>Nama</th>
+                    <th>Tempat Lahir</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Password</th>
                   </tr>
                 </thead>
                 <tbody>
             <?php
               include 'koneksi.php';
-              $a = mysqli_query($kon, "SELECT * FROM surat_masuk");
+              session_start();
+              $id = $_SESSION['id_user'];
+              $a = mysqli_query($kon, "SELECT * FROM user WHERE id_user = '$id'");
               $no =1;
               while($b = mysqli_fetch_array($a)){
             ?>
                   <tr>
-                    <td><?php echo $no; ?></td>
-                    <td><?php echo $b['tanggal_surat']; ?></td>
-                    <td><?php echo $b['tanggal_terima']; ?></td>
-                    <td><?php echo $b['kode_agenda']; ?></td>
-                    <td><?php echo $b['nomor_surat']; ?></td>
-                    <td><?php echo $b['jenis_surat']; ?></td>
-                    <td><?php echo $b['pengirim']; ?></td>
-                    <td><?php echo $b['perihal']; ?></td>
-                    <td><a class="badge badge-success" href = "editSM.php?no=<?php echo $b['id_masuk'];?>">Edit</a>
-                   <!--  <a class="badge badge-info" href = "cetakSM.php?no=<?php echo $b['id_masuk'];?>">Cetak</a> -->
-                  <a class="badge badge-danger" href = "hapusSM.php?no=<?php echo $b['id_masuk'];?>">Hapus</a></td>
+                    <td><?php echo $b['username']; ?></td>
+                    <td><?php echo $b['nama']; ?></td>
+                    <td><?php echo $b['tempat_lahir']; ?></td>
+                    <td><?php echo $b['tanggal_lahir']; ?></td>
+                    <td><?php echo $b['password']; ?></td>
+                    <td><a class="badge badge-success" href = "editAkun.php?no=<?php echo $b['id_user'];?>">Edit</a>
                   </tr>
                   <?php
                   $no++;

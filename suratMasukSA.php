@@ -168,7 +168,7 @@
                     <td><?php echo $b['jenis_surat']; ?></td>
                     <td><?php echo $b['pengirim']; ?></td>
                     <td><?php echo $b['perihal']; ?></td>
-                    <td><a class="badge badge-success" href = "editSM.php?no=<?php echo $b['id_masuk'];?>">Edit</a>
+                    <td><a class="badge badge-success" href = "editSMSA.php?no=<?php echo $b['id_masuk'];?>">Edit</a>
                    <!--  <a class="badge badge-info" href = "cetakSM.php?no=<?php echo $b['id_masuk'];?>">Cetak</a> -->
                   <a class="badge badge-danger" href = "hapusSMSA.php?no=<?php echo $b['id_masuk'];?>">Hapus</a></td>
                   </tr>

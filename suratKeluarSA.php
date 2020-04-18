@@ -167,7 +167,7 @@
                     <td><?php echo $b['jenis_surat']; ?></td>
                     <td><?php echo $b['pengirim']; ?></td>
                     <td><?php echo $b['perihal']; ?></td>
-                    <td><a class="badge badge-success" href = "editSK.php?no=<?php echo $b['id_keluar'];?>">Edit</a>
+                    <td><a class="badge badge-success" href = "editSKSA.php?no=<?php echo $b['id_keluar'];?>">Edit</a>
                     <!-- <a class="badge badge-info" href = "cetakSK.php?no=<?php echo $b['id_keluar'];?>">Cetak</a> -->
                   <a class="badge badge-danger" href = "hapusSKSA.php?no=<?php echo $b['id_keluar'];?>">Hapus</a></td>
                   </tr>

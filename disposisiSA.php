@@ -131,14 +131,11 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>No. Urut</th>
+                     <th>No. Urut</th>
                     <th>Tanggal Disposisi</th>
-                    <th>Tanggal Terima</th>
-                    <th>Kode Agenda</th>
-                    <th>Pengirim</th>
                     <th>Isi Disposisi</th>
-                    <th>Di Teruskan</th>
-                    <th>Untuk</th>
+                    <th>Kepada</th>
+                    <th>Tindak Lanjut</th>
                     <th>Status Surat</th>
                     <th>Aksi</th>
                   </tr>
@@ -153,16 +150,13 @@
                   <tr>
                     <td><?php echo $no; ?></td>
                     <td><?php echo $b['tanggal_disposisi']; ?></td>
-                    <td><?php echo $b['tanggal_terima']; ?></td>
-                    <td><?php echo $b['kode_agenda']; ?></td>
-                    <td><?php echo $b['pengirim']; ?></td>
                     <td><?php echo $b['isi_disposisi']; ?></td>
                     <td><?php echo $b['kepada']; ?></td>
                     <td><?php echo $b['tindak_lanjut']; ?></td>
                     <td><?php echo $b['status']; ?></td>
-                    <td><a class="badge badge-success" href = "editDisposisi.php?no=<?php echo $b['id_disposisi']; ?>">Edit</a>
+                    <td><a class="badge badge-success" href = "editDisposisiSA.php?no=<?php echo $b['id_disposisi']; ?>">Edit</a>
                     <a class="badge badge-info" href = "cetakDisposisi.php?no=<?php echo $b['id_disposisi']; ?>">Cetak</a>
-                  <a class="badge badge-danger" href = "hapusDisposisi.php?no=<?php echo $b['id_disposisi']; ?>">Hapus</a></td>
+                  <a class="badge badge-danger" href = "hapusDisposisiSA.php?no=<?php echo $b['id_disposisi']; ?>">Hapus</a></td>
                   </tr>
                   <?php
                   $no++;

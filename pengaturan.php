@@ -1,3 +1,10 @@
+<?php
+session_start();
+              $id = $_SESSION['id_user'];
+              if ($_SESSION['level'] != 'admin') {
+    header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -137,13 +144,14 @@
                     <th>Tempat Lahir</th>
                     <th>Tanggal Lahir</th>
                     <th>Password</th>
+                    <th>Level</th>
+                    <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
             <?php
               include 'koneksi.php';
-              session_start();
-              $id = $_SESSION['id_user'];
+              
               $a = mysqli_query($kon, "SELECT * FROM user WHERE id_user = '$id'");
               $no =1;
               while($b = mysqli_fetch_array($a)){
@@ -154,6 +162,7 @@
                     <td><?php echo $b['tempat_lahir']; ?></td>
                     <td><?php echo $b['tanggal_lahir']; ?></td>
                     <td><?php echo $b['password']; ?></td>
+                    <td><?php echo $b['level']; ?></td>
                     <td><a class="badge badge-success" href = "editAkun.php?no=<?php echo $b['id_user'];?>">Edit</a>
                   </tr>
                   <?php

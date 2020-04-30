@@ -1,3 +1,10 @@
+<?php
+session_start();
+              $id = $_SESSION['id_user'];
+              if ($_SESSION['level'] != 'admin') {
+    header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,6 +59,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
+        
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           <!-- <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="#">Activity Log</a>
@@ -211,7 +219,7 @@
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                    <input name="id_user" placeholder="" class="form-control" type="text">
+                    <input name="id_user" placeholder="" class="form-control" type="text" value="<?php echo $id;?>">
                       </div>
                     </div>
                   </div>

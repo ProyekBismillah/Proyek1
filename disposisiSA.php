@@ -119,12 +119,12 @@
             <i class="fas fa-file-archive"></i>
             Data Disposisi</div>
             <!-- <div class = "btn-group pull-right"> -->
-              <a style="margin-left: 890px; margin-top: 25px" class ="col-xl-2 btn btn-info" href="tambahDisposisiSA.php">
+             <!--  <a style="margin-left: 890px; margin-top: 25px" class ="col-xl-2 btn btn-info" href="tambahDisposisiSA.php">
                 <i class = "fa fa-plus">
-                  <!-- ::before -->
+                  <!-- ::before 
                 </i>
                 Tambah Disposisi
-              </a>
+              </a> -->
             <!-- </div> -->
           <div class="card-body">
             <div class="table-responsive">

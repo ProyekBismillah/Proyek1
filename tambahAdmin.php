@@ -111,7 +111,7 @@
             <a href="indexSA.php">Beranda</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="suratKeluarSA.php">Surat Keluar</a>
+            <a href="dataAdmin.php">Data Admin</a>
           </li>
           <li class="breadcrumb-item active">Tambah Data Admin</li>
         </ol>

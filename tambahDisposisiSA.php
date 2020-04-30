@@ -73,22 +73,7 @@
           <span>BERANDA</span>
         </a>
       </li>
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <a class="dropdown-item" href="login.html">Login</a>
-          <a class="dropdown-item" href="register.html">Register</a>
-          <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Other Pages:</h6>
-          <a class="dropdown-item" href="404.html">404 Page</a>
-          <a class="dropdown-item" href="blank.html">Blank Page</a>
-        </div>
-      </li> -->
+      
       <li class="nav-item">
         <a class="nav-link" href="suratMasukSA.php">
           <i class="fas fa-fw fa-archive"></i>
@@ -126,7 +111,7 @@
             <a href="indexSA.php">Beranda</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="disposisiSA.php">Disposisi</a>
+            <a href="suratMasukSA.php">Surat Masuk</a>
           </li>
           <li class="breadcrumb-item active">Tambah Data Disposisi</li>
         </ol>
@@ -134,12 +119,15 @@
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-            <i class="fas fa-file-archive"></i>
+            <i class="fas fa-fw fa-archive"></i>
             Tambah Data Disposisi</div>
+            <?php
+              $no=$_GET['no']; 
+            ?>
           <div class="card-body">
             <div class = "page-content-wrap"></div>
                 <div class="container">
-                      <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+                      <form class="well form-horizontal" action="p_tambahDisposisiSA.php" method="post"  id="contact_form" enctype="multipart/form-data">
                   <fieldset>
 
                   <!-- Form Name -->
@@ -147,7 +135,7 @@
 
                   <!-- Text input-->
 
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label class="col-md-10 control-label">ID Disposisi</label>  
                     <div class="col-md-10 inputGroupContainer">
                     <div class="input-group">
@@ -155,7 +143,7 @@
                     <input  name="id_disposisi" placeholder="" class="form-control"  type="text">
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
                   <!-- Text input-->
 
@@ -164,7 +152,7 @@
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="id_masuk" placeholder="" class="form-control"  type="text">
+                    <input name="id_masuk" placeholder="" class="form-control"  type="text" value="<?php echo $no;?>">
                       </div>
                     </div>
                   </div>
@@ -178,28 +166,6 @@
                       </div>
                     </div>
                   </div>
-
-                    <!-- <div class="form-group"> 
-                    <label class="col-md-10 control-label">Department / Office</label>
-                      <div class="col-md-10 selectContainer">
-                      <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                      <select name="department" class="form-control selectpicker">
-                        <option value="">Select your Department/Office</option>
-                        <option>Department of Engineering</option>
-                        <option>Department of Agriculture</option>
-                        <option >Accounting Office</option>
-                        <option >Tresurer's Office</option>
-                        <option >MPDC</option>
-                        <option >MCTC</option>
-                        <option >MCR</option>
-                        <option >Mayor's Office</option>
-                        <option >Tourism Office</option>
-                      </select>
-                    </div>
-                  </div>
-                  </div>
-                     -->
 
                   <!-- Text input-->
 
@@ -227,11 +193,11 @@
 
                   <!-- Text input-->
                          <div class="form-group">
-                    <label class="col-md-10 control-label">Tidak Lanjut</label>  
+                    <label class="col-md-10 control-label">Tindak Lanjut</label>  
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <input name="tidak_lanjut" placeholder="" class="form-control"  type="text">
+                    <input name="tindak_lanjut" placeholder="" class="form-control"  type="text">
                       </div>
                     </div>
                   </div>

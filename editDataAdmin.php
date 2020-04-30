@@ -1,10 +1,3 @@
-<?php
-session_start();
-              $id = $_SESSION['id_user'];
-              if ($_SESSION['level'] != 'admin') {
-    header("location:login.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +26,7 @@ session_start();
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="index.php">ARSIP SURAT</a>
+    <a class="navbar-brand mr-1" href="indexSA.php">ARSIP SURAT</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
@@ -46,21 +39,20 @@ session_start();
         <div class="input-group-append">
           <button class="btn btn-primary" type="button">
             <i class="fas fa-search"></i>
-          </button> -->
-        </div>
+          </button>
+        </div> -->
       </div>
     </form>
 
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
       
-      </li>
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle fa-fw"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <!-- <a class="dropdown-item" href="#">Settings</a>
+         <!--  <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="#">Activity Log</a>
           <div class="dropdown-divider"></div> -->
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
@@ -75,31 +67,36 @@ session_start();
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="index.php">
+        <a class="nav-link" href="indexSA.php">
           <i class="fas fa-fw fa-home"></i>
-          <span>BERANDA</span>
+          <span>Beranda</span>
         </a>
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="suratMasuk.php">
+        <a class="nav-link" href="suratMasukSA.php">
           <i class="fas fa-fw fa-archive"></i>
           <span>SURAT MASUK</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="suratKeluar.php">
+        <a class="nav-link" href="suratKeluarSA.php">
           <i class="fas fa-fw fa-archive"></i>
           <span>SURAT KELUAR</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="disposisi.php">
+        <a class="nav-link" href="disposisiSA.php">
           <i class="fas fa-fw fa-file-archive"></i>
           <span>DISPOSISI</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pengaturan.php">
+        <a class="nav-link" href="pengaturanSA.php">
           <i class="fas fa-fw fa-sync"></i>
           <span>PENGATURAN</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="dataAdmin.php">
+          <i class="fas fa-fw fa-address-book"></i>
+          <span>DATA ADMIN</span></a>
       </li>
     </ul>
 
@@ -110,41 +107,43 @@ session_start();
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="index.php">Beranda</a>
+            <a href="indexSA.php">Beranda</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="suratMasuk.php">Surat Masuk</a>
+            <a href="dataAdmin.php">Data Admin</a>
           </li>
-          <li class="breadcrumb-item active">Tambah Data Surat Masuk</li>
+          <li class="breadcrumb-item active">Edit Data Admin</li>
         </ol>
 
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-            <i class="fas fa-archive"></i>
-            Tambah Data Surat Masuk</div>
-            
+            <i class="fas fa-fw fa-sync"></i>
+            Edit Data Admin</div>
           <div class="card-body">
             <div class = "page-content-wrap"></div>
-            <?php
-              include 'koneksi.php';
-              $a = mysqli_query($kon, "SELECT * FROM kode_agenda"); 
-            ?>
                 <div class="container">
-                      <form class="well form-horizontal" action="p_tambahSM.php " method="post"  id="contact_form" enctype="multipart/form-data">
+                  <?php
+                    include 'koneksi.php';
+                    $no=$_GET['no'];
+                    $query="SELECT * FROM user WHERE id_user = '$no'" ; 
+                    $result=mysqli_query($kon, $query);
+                    while ($row=mysqli_fetch_array($result)) {
+                  ?>
+                      <form class="well form-horizontal" action="p_editDataAdmin.php" method="POST"  id="contact_form" enctype="multipart/form-data">
                   <fieldset>
 
                   <!-- Form Name -->
-                  <legend><center><h2><b>Tambah Data Surat Masuk</b></h2></center></legend><br>
+                  <legend><center><h2><b>Edit Data Admin</b></h2></center></legend><br>
 
                   <!-- Text input-->
 
                   <div class="form-group">
-                    <label class="col-md-10 control-label" hidden>ID Masuk</label>  
+                    <label class="col-md-10 control-label" hidden>ID User</label>  
                     <div class="col-md-10 inputGroupContainer">
                     <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input  name="id_masuk" placeholder="" class="form-control"  type="text" hidden>
+                    <input  name="id_user" placeholder="" class="form-control"  type="hidden" value="<?php echo $row['id_user'];?>">
                       </div>
                     </div>
                   </div>
@@ -152,40 +151,21 @@ session_start();
                   <!-- Text input-->
 
                   <div class="form-group">
-                    <label class="col-md-10 control-label" >Tanggal Surat</label> 
+                    <label class="col-md-10 control-label" >Username</label> 
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="tanggal_surat" placeholder="" class="form-control"  type="date">
+                    <input name="username" placeholder="" class="form-control"  type="text" value="<?php echo $row['username'];?>">
                       </div>
                     </div>
                   </div>
 
                   <div class="form-group">
-                    <label class="col-md-10 control-label" >Tanggal Terima</label> 
+                    <label class="col-md-10 control-label" >Nama</label> 
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="tanggal_terima" placeholder="" class="form-control"  type="date">
-                      </div>
-                    </div>
-                  </div>
-
-                   
-
-                  <div class="form-group">
-                    <label class="col-md-10 control-label">Kode Agenda</label>  
-                    <div class="col-md-10 inputGroupContainer">
-                    <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <!-- <input  name="kode_agenda" placeholder="" class="form-control"  type="text"> -->
-                    <select id="kode_agenda" name="kode_agenda" class="form-control">
-                      <?php
-                        while($b = mysqli_fetch_array($a)){ 
-                      ?>
-                      <option value="<?php echo $b['kode_agenda'];?>"><?php echo $b['kode_agenda'];?> - <?php echo $b['keterangan'];?></option>
-                    <?php } ?>
-                    </select>
+                    <input name="nama" placeholder="" class="form-control"  type="text" value="<?php echo $row['nama'];?>">
                       </div>
                     </div>
                   </div>
@@ -193,11 +173,11 @@ session_start();
                   <!-- Text input-->
 
                   <div class="form-group">
-                    <label class="col-md-10 control-label" >Nomor Surat</label> 
+                    <label class="col-md-10 control-label" >Tempat Lahir</label> 
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="nomor_surat" placeholder="" class="form-control"  type="text">
+                    <input name="tempat_lahir" placeholder="" class="form-control"  type="text" value="<?php echo $row['tempat_lahir'];?>">
                       </div>
                     </div>
                   </div>
@@ -205,64 +185,35 @@ session_start();
                   <!-- Text input-->
 
                   <div class="form-group">
-                    <label class="col-md-10 control-label" >Jenis Surat</label> 
+                    <label class="col-md-10 control-label" >Tanggal Lahir</label> 
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="jenis_surat" placeholder="" class="form-control"  type="text">
+                    <input name="tanggal_lahir" placeholder="" class="form-control"  type="date" value="<?php echo $row['tanggal_lahir'];?>">
                       </div>
                     </div>
                   </div>
 
                   <!-- Text input-->
                          <div class="form-group">
-                    <label class="col-md-10 control-label">Pengirim</label>  
+                    <label class="col-md-10 control-label">Password</label>  
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <input name="pengirim" placeholder="" class="form-control"  type="text">
+                    <input name="password" placeholder="" class="form-control"  type="text" value="<?php echo $row['password'];?>">
                       </div>
                     </div>
                   </div>
-
-
-                  <!-- Text input-->
-                         
                   <div class="form-group">
-                    <label class="col-md-10 control-label">Perihal</label>  
+                    <label class="col-md-10 control-label" >Level</label> 
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                    <input name="perihal" placeholder="" class="form-control" type="text">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input name="level" placeholder="" class="form-control"  type="text" value="<?php echo $row['level'];?>">
                       </div>
                     </div>
                   </div>
-
-                  <div class="form-group">
-                    <label class="col-md-10 control-label">ID USER</label>  
-                      <div class="col-md-10 inputGroupContainer">
-                      <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                    <input name="id_user" placeholder="" class="form-control" type="text" value="<?php echo $id;?>">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-md-10 control-label">Gambar</label>  
-                      <div class="col-md-10 inputGroupContainer">
-                      <div class="input-group">
-                          <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                    <input name="gambar" placeholder="" class="form-control" type="file">
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Select Basic -->
-
-                  <!-- Success message -->
-                  <!-- <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div> -->
-
+                  
                   <!-- Button -->
                   <div class="form-group">
                     <label class="col-md-10 control-label"></label>
@@ -270,7 +221,9 @@ session_start();
                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
                     </div>
                   </div>
-
+                  <?php
+                    }
+                  ?>
                   </fieldset>
                   </form>
                   </div>
@@ -289,7 +242,7 @@ session_start();
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright © Alya Diana Umami</span>
+            <span>Copyright © Alya Bimbing Umami</span>
           </div>
         </div>
       </footer>

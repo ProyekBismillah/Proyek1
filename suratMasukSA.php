@@ -169,8 +169,8 @@
                     <td><?php echo $b['pengirim']; ?></td>
                     <td><?php echo $b['perihal']; ?></td>
                     <td><a class="badge badge-success" href = "editSMSA.php?no=<?php echo $b['id_masuk'];?>">Edit</a>
-                   <!--  <a class="badge badge-info" href = "cetakSM.php?no=<?php echo $b['id_masuk'];?>">Cetak</a> -->
-                  <a class="badge badge-danger" href = "hapusSMSA.php?no=<?php echo $b['id_masuk'];?>">Hapus</a></td>
+                  <a class="badge badge-danger" href = "hapusSMSA.php?no=<?php echo $b['id_masuk'];?>">Hapus</a>
+                  <a class="badge badge-warning" href = "tambahDisposisiSA.php?no=<?php echo $b['id_masuk'];?>">Disposisikan</a></td>
                   </tr>
                   <?php
                   $no++;

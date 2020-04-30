@@ -121,20 +121,23 @@
             <a href="index.php">Beranda</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="disposisi.php">Disposisi</a>
+            <a href="suratMasuk.php">Surat Masuk</a>
           </li>
           <li class="breadcrumb-item active">Tambah Data Disposisi</li>
         </ol>
 
-        <!-- DataTables Example -->
+         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
-            <i class="fas fa-file-archive"></i>
+            <i class="fas fa-fw fa-archive"></i>
             Tambah Data Disposisi</div>
+            <?php
+              $no=$_GET['no']; 
+            ?>
           <div class="card-body">
             <div class = "page-content-wrap"></div>
                 <div class="container">
-                      <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+                      <form class="well form-horizontal" action="p_tambahDisposisi.php" method="post"  id="contact_form" enctype="multipart/form-data">
                   <fieldset>
 
                   <!-- Form Name -->
@@ -143,23 +146,11 @@
                   <!-- Text input-->
 
                   <div class="form-group">
-                    <label class="col-md-10 control-label">ID Disposisi</label>  
-                    <div class="col-md-10 inputGroupContainer">
-                    <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input  name="id_disposisi" placeholder="" class="form-control"  type="text">
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Text input-->
-
-                  <div class="form-group">
                     <label class="col-md-10 control-label" >ID Masuk</label> 
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input name="id_masuk" placeholder="" class="form-control"  type="text">
+                    <input name="id_masuk" placeholder="" class="form-control"  type="text" value="<?php echo $no;?>">
                       </div>
                     </div>
                   </div>
@@ -200,11 +191,11 @@
 
                   <!-- Text input-->
                          <div class="form-group">
-                    <label class="col-md-10 control-label">Tidak Lanjut</label>  
+                    <label class="col-md-10 control-label">Tindak Lanjut</label>  
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <input name="tidak_lanjut" placeholder="" class="form-control"  type="text">
+                    <input name="tindak_lanjut" placeholder="" class="form-control"  type="text">
                       </div>
                     </div>
                   </div>

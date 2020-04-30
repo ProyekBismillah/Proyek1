@@ -1,3 +1,10 @@
+<?php
+session_start();
+              $id = $_SESSION['id_user'];
+              if ($_SESSION['level'] != 'superadmin') {
+    header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -240,7 +247,7 @@
                       <div class="col-md-10 inputGroupContainer">
                       <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                    <input name="id_user" placeholder="" class="form-control" type="text">
+                    <input name="id_user" placeholder="" class="form-control" type="text" value="<?php echo $id;?>">
                       </div>
                     </div>
                   </div>
